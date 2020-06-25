@@ -87,8 +87,8 @@ class Message extends ActiveRecord
         if (parent::beforeSave($insert)) {
 
             try{
-                $folder     = 'D:/sms/outgoing/';
-                //$folder     = '/var/spool/sms/outgoing/';
+                //$folder     = 'D:/sms/outgoing/';
+                $folder     = '/var/spool/sms/outgoing/';
                 $filename   = tempnam("","");
 
                 $myfile = fopen($filename, "wb") or die("Unable to open file!");
