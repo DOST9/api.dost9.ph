@@ -2,7 +2,8 @@
 namespace api\modules\sms\models;
 
 use \yii\db\ActiveRecord;
-use yii\behaviors\TimestampBehavior;
+use \yii\db\Expression;
+use \yii\behaviors\TimestampBehavior;
 /**
  * This is the model class for table "lab".
  *
