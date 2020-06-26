@@ -75,9 +75,10 @@ class Message extends ActiveRecord
                 'attributes' => [
                     ActiveRecord::EVENT_BEFORE_INSERT => 'created_at',
                 ],
-                'value' => function() { 
+                'value' => new Expression('NOW()'),
+                /*'value' => function() { 
                     return date('U'); // unix timestamp 
-                },
+                },*/
             ]
         ];
     }
