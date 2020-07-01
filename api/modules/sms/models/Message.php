@@ -32,7 +32,7 @@ class Message extends ActiveRecord
         return [
             //[['hash', 'sender', 'recipient', 'status', 'title', 'message', 'via', 'created_at', 'module', 'action'], 'required'],
             [['recipient', 'title', 'message'], 'required'],
-            [['sender', 'recipient', 'status'], 'integer'],
+            [['status'], 'integer'],
             [['message'], 'string'],
             [['created_at'], 'safe'],
             [['hash'], 'string', 'max' => 32],
@@ -124,7 +124,7 @@ class Message extends ActiveRecord
                     copy($filename, $folder.basename($filename));
                     unlink($filename);
                 }
-                
+
             } catch (Exception $e) {
 
             }
