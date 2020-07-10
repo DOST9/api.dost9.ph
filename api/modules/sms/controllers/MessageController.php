@@ -81,7 +81,7 @@ class MessageController extends ActiveController
         return $model;
     }*/
 
-    function createNewmessage()
+    /*function createNewmessage()
     {
         $model =  new $this->modelClass;
         
@@ -90,8 +90,8 @@ class MessageController extends ActiveController
         $model->sender = '639274790425'; 
         $model->recipient = 639177975944; 
         $model->status = 10; 
-        $model->title = 'SMS'; 
-        $model->message = 'This is a sms notification'; 
+        $model->title = 'mail'; 
+        $model->message = 'This is a mail notification'; 
         $model->via = 'web'; 
         $model->created_at = date("Y-m-d H:i:s"); 
         $model->module = 'FAIMS'; 
@@ -99,7 +99,7 @@ class MessageController extends ActiveController
         $model->save();
 
         return $model;
-    }
+    }*/
 }
 
 

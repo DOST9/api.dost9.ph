@@ -15,6 +15,10 @@ return [
         'sms' => [
             'basePath' => '@app/modules/sms',
             'class' => 'api\modules\sms\Module'
+        ],
+        'mail' => [
+            'basePath' => '@app/modules/mail',
+            'class' => 'api\modules\mail\Module'
         ]
     ],
     'components' => [
@@ -77,14 +81,13 @@ return [
                         '{id}' => '<id:\\w+>'
                     ]
                 ],
-                /*[
+                [
                     'class' => 'yii\rest\UrlRule', 
-                    'controller' => ['sms/message'], 
-                    'extraPatterns' => [
-                        'GET verifyagency' => 'verifyagency'
+                    'controller' => 'mail/message',
+                    'tokens' => [
+                        '{id}' => '<id:\\w+>'
                     ]
-                ],*/
-
+                ],
             ],        
         ]
     ],

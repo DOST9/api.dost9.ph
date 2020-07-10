@@ -1,9 +1,13 @@
 <?php
 namespace api\modules\sms\models;
 
+use Yii;
 use \yii\db\ActiveRecord;
 use \yii\db\Expression;
 use \yii\behaviors\TimestampBehavior;
+
+use yii\helpers\Html;
+use yii\helpers\Url;
 /**
  * This is the model class for table "lab".
  *
@@ -83,14 +87,14 @@ class Message extends ActiveRecord
             ]
         ];
     }
-
+    
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
 
             try{
-                //$folder     = 'D:/sms/outgoing/';
-                $folder     = '/var/spool/sms/outgoing/';
+                $folder     = 'D:/sms/outgoing/';
+                //$folder     = '/var/spool/sms/outgoing/';
 
                 $recipients = explode(',', $this->recipient);
 
@@ -123,6 +127,8 @@ class Message extends ActiveRecord
                     
                     copy($filename, $folder.basename($filename));
                     unlink($filename);
+
+                    
                 }
 
             } catch (Exception $e) {
@@ -135,67 +141,4 @@ class Message extends ActiveRecord
             return false;
         }
     }
-
-    /*public function afterSave() {
-        parent::afterSave();
-        if ($this->isNewRecord) {
-            $newid = self::newid($this->id);
-            $this->driverid = $new_id;
-            $this->isNewRecord = false;
-            $this->saveAttributes(array('driverid'));
-        }
-    }*/
-
-    /*public function beforeSave($insert) 
-    {
-        
-
-        if ($insert) {
-            //do something
-        }else{
-            //check if there are changes in discount
-            if($this->_oldAttributes['discount_id']!=$this->attributes['discount_id']){
-                //if there are any changes
-                //check if the original data has no discount yet
-                if($this->_oldAttributes['discount_id']){
-                    //recompute all the fee in the anakysis
-                    $sql = "SELECT SUM(fee) as subtotal FROM tbl_analysis WHERE request_id=$this->request_id";
-                    $Connection = Yii::$app->labdb;
-                    $command = $Connection->createCommand($sql);
-                    $row = $command->queryOne();
-                    $subtotal = $row['subtotal'];
-                    $this->total = $subtotal - ($subtotal * ((int)$this->discount/100));
-
-                }else{
-                    //we just adjust the total base on the discount
-                    if($this->discount_id){
-                        $this->total = $this->total - ($this->total * ((int)$this->discount/100));
-                    }
-                }
-            }
-            
-        }
-        return parent::beforeSave($insert);
-    }*/
-
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    /*
-    public function getLabSampletypes()
-    {
-        return $this->hasMany(LabSampletype::className(), ['lab_id' => 'id']);
-    }
-    */
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    /*
-    public function getReferrals()
-    {
-        return $this->hasMany(Referral::className(), ['lab_id' => 'id']);
-    }
-    */
 }

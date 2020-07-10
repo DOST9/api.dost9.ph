@@ -17,7 +17,7 @@ use yii\helpers\Html;
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
  */
-class Column extends Object
+class Column extends BaseObject
 {
     /**
      * @var GridView the grid view object that owns this column.

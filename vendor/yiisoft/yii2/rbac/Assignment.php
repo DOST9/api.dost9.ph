@@ -17,7 +17,7 @@ use yii\base\Object;
  * @author Alexander Kochetov <creocoder@gmail.com>
  * @since 2.0
  */
-class Assignment extends Object
+class Assignment extends BaseObject
 {
     /**
      * @var string|integer user ID (see [[\yii\web\User::id]])
